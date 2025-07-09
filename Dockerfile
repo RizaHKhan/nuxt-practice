@@ -10,14 +10,6 @@ FROM base AS build
 COPY . ./
 RUN npm run build
 
-# Development image (optional, not default)
-FROM base AS dev
-COPY . ./
-ENV PORT=3000
-ENV HOST=0.0.0.0
-EXPOSE 3000
-CMD ["npm", "run", "dev"]
-
 # Production image (default/final)
 FROM node:22-alpine AS prod
 WORKDIR /app
